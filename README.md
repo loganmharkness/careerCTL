@@ -2,7 +2,7 @@
 
 AI-powered career toolkit built with FastAPI and the Claude API. Five tools to take you from resume to offer.
 
-![careerCTL preview](image.png)
+![careerCTL preview](static/image.png)
 
 ## Tools
 
