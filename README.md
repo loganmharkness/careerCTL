@@ -2,6 +2,8 @@
 
 AI-powered career toolkit built with FastAPI and the Claude API. Five tools to take you from resume to offer.
 
+![careerCTL preview](image.png)
+
 ## Tools
 
 - **Resume Reviewer** — upload or paste your resume and get scores for clarity, impact, and keywords, plus specific strengths and improvements
@@ -9,6 +11,28 @@ AI-powered career toolkit built with FastAPI and the Claude API. Five tools to t
 - **Bullet Rewriter** — click any resume bullet and get three AI-rewritten versions that naturally incorporate missing keywords
 - **Cover Letter Generator** — paste your resume and a job description, choose your tone and length, and get a tailored cover letter in seconds
 - **Interview Prep** — paste a job description and get the 5 most likely technical and behavioural interview questions, each with a suggested answer framework and interviewer-intent insight
+
+## Setup & Run
+
+**Prerequisites:** Python 3.9+, an [Anthropic API key](https://console.anthropic.com/)
+
+```bash
+# 1. Clone the repo
+git clone https://github.com/loganmharkness/careerCTL.git
+cd careerCTL
+
+# 2. Install dependencies
+pip install fastapi uvicorn anthropic python-dotenv pymupdf python-multipart
+
+# 3. Add your API key
+echo "ANTHROPIC_API_KEY=your_key_here" > .env
+
+# 4. Start the server
+uvicorn main:app --reload
+
+# 5. Open in browser
+# http://localhost:8000
+```
 
 ## Tech Stack
 
