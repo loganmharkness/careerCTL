@@ -34,6 +34,22 @@ uvicorn main:app --reload
 # http://localhost:8000
 ```
 
+## Testing
+
+Install dev dependencies:
+
+```bash
+pip install -r dev-requirements.txt
+```
+
+Run all tests:
+
+```bash
+pytest tests/
+```
+
+Tests hit the live Claude API and require a valid `ANTHROPIC_API_KEY` in your `.env` file. Each test class covers one endpoint with a happy path, a missing-input error check, and a response format assertion.
+
 ## Tech Stack
 
 - **Frontend** — HTML, CSS, JavaScript
