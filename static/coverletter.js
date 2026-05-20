@@ -61,7 +61,7 @@ generateBtn.addEventListener('click', async () => {
 
     const res  = await fetch('/cover-letter', { method: 'POST', body: form });
     const data = await res.json();
-    if (!res.ok || data.error) { showError(data.error || 'Something went wrong.'); document.getElementById('empty-state').hidden = false; return; }
+    if (!res.ok || data.error) { showError(data.error || 'Something went wrong.'); return; }
 
     document.getElementById('cl-output').textContent = data.result;
     document.getElementById('cl-results').hidden = false;
@@ -70,7 +70,6 @@ generateBtn.addEventListener('click', async () => {
     document.getElementById('edit-inputs-btn').hidden = false;
   } catch (err) {
     showError('Failed to connect to the server. Is it running?');
-    document.getElementById('empty-state').hidden = false;
     console.error(err);
   } finally {
     setLoading(false);

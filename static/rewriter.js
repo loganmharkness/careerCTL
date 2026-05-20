@@ -84,7 +84,10 @@ function renderBullets(text) {
     const div = document.createElement('div');
     div.className = 'resume-line';
     div.textContent = line;
-    div.addEventListener('click', () => startRewrite(line));
+    div.addEventListener('click', () => {
+      document.getElementById('empty-state').hidden = true;
+      startRewrite(line);
+    });
     container.appendChild(div);
   });
 }
@@ -92,7 +95,6 @@ function renderBullets(text) {
 async function startRewrite(bullet) {
   document.getElementById('original-bullet').textContent = bullet;
   document.getElementById('rewrite-list').innerHTML = '';
-  document.getElementById('empty-state').hidden    = true;
   document.getElementById('rewrite-results').hidden = false;
   document.getElementById('rewrite-loading').style.display = 'flex';
 
