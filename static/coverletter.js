@@ -67,6 +67,7 @@ generateBtn.addEventListener('click', async () => {
     document.getElementById('cl-results').hidden = false;
     document.getElementById('resume-group').hidden = true;
     document.getElementById('jd-group').hidden = true;
+    document.getElementById('edit-inputs-btn').hidden = false;
   } catch (err) {
     showError('Failed to connect to the server. Is it running?');
     document.getElementById('empty-state').hidden = false;
@@ -74,6 +75,12 @@ generateBtn.addEventListener('click', async () => {
   } finally {
     setLoading(false);
   }
+});
+
+document.getElementById('edit-inputs-btn').addEventListener('click', () => {
+  document.getElementById('resume-group').hidden = false;
+  document.getElementById('jd-group').hidden = false;
+  document.getElementById('edit-inputs-btn').hidden = true;
 });
 
 copyBtn.addEventListener('click', function () {

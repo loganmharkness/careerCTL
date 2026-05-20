@@ -67,6 +67,13 @@ header {
   transition: color var(--transition);
 }
 .back-link:hover { color: var(--accent); }
+.edit-inputs-link {
+  background: none; border: none; cursor: pointer; padding: 0;
+  font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); display: inline-flex; align-items: center; gap: 0.3rem;
+  transition: color var(--transition);
+}
+.edit-inputs-link:hover { color: var(--accent); }
 
 a.logo { text-decoration: none; transition: opacity var(--transition); }
 a.logo:hover { opacity: 0.75; }

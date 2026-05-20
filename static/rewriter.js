@@ -59,6 +59,7 @@ loadBtn.addEventListener('click', async () => {
     renderBullets(resume);
     rewriterSection.hidden = false;
     inputSection.hidden = true;
+    document.getElementById('edit-bar').hidden = false;
     rewriterSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   } catch (err) {
     showError('Failed to connect to the server. Is it running?');
@@ -66,6 +67,13 @@ loadBtn.addEventListener('click', async () => {
   } finally {
     setLoading(false);
   }
+});
+
+document.getElementById('edit-inputs-btn').addEventListener('click', () => {
+  inputSection.hidden = false;
+  rewriterSection.hidden = true;
+  document.getElementById('edit-bar').hidden = true;
+  inputSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
 function renderBullets(text) {
