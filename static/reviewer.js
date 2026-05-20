@@ -56,6 +56,10 @@ reviewBtn.addEventListener('click', async () => {
   }
 });
 
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') { e.preventDefault(); reviewBtn.click(); }
+});
+
 function renderResults(d) {
   document.getElementById('verdict-text').textContent = d.verdict ?? '';
 

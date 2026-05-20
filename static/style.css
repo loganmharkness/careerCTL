@@ -116,6 +116,7 @@ main {
   color: var(--accent); margin-top: 0.5rem;
 }
 .tool-card--wide { grid-column: 1 / -1; }
+.kbd-hint { font-size: 0.68rem; color: var(--muted); text-align: center; opacity: 0.5; }
 
 /* ── Input panel ────────────────────────────────────────── */
 .input-panel {

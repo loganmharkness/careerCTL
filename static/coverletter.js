@@ -76,6 +76,10 @@ generateBtn.addEventListener('click', async () => {
   }
 });
 
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') { e.preventDefault(); generateBtn.click(); }
+});
+
 copyBtn.addEventListener('click', function () {
   const text = document.getElementById('cl-output').textContent;
   navigator.clipboard.writeText(text);
