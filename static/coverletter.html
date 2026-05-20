@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cover Letter — careerCTL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <header>
+    <a href="/" class="logo">
+    <span class="logo-bracket">[</span>career<span class="logo-slash">/</span>ctl<span class="logo-bracket">]</span>
+    </a>
+    <p class="tagline">cover letter generator</p>
+    <a href="/" class="back-link">← back to tools</a>
+  </header>
+  <main>
+    <div class="tool-layout">
+
+      <!-- Left: inputs + options -->
+      <div class="tool-left">
+        <div class="card" style="height:100%">
+          <h3>Your Details</h3>
+
+          <div class="textarea-group" id="resume-group" style="margin-bottom:1rem">
+            <label for="resume"><span class="label-num">01</span> Resume</label>
+            <textarea id="resume" style="min-height:200px" placeholder="Paste your resume here, or upload a PDF below…" spellcheck="false"></textarea>
+            <span class="char-count" id="resume-count">0 characters</span>
+            <div class="file-upload-row">
+              <label for="resume-file" class="file-label"><span class="file-icon">↑</span> Upload PDF instead</label>
+              <input type="file" id="resume-file" accept=".pdf,.txt" />
+              <span class="file-name" id="file-name">no file chosen</span>
+            </div>
+          </div>
+
+          <div class="textarea-group" id="jd-group" style="margin-bottom:1.5rem">
+            <label for="job-description"><span class="label-num">02</span> Job Description</label>
+            <textarea id="job-description" style="min-height:200px" placeholder="Paste the full job posting here…" spellcheck="false"></textarea>
+            <span class="char-count" id="jd-count">0 characters</span>
+          </div>
+
+          <div class="cl-control-group">
+            <label class="cl-label">Tone</label>
+            <div class="cl-toggle" id="tone-toggle">
+              <button class="cl-toggle-btn active" data-value="formal">Formal</button>
+              <button class="cl-toggle-btn" data-value="conversational">Conversational</button>
+            </div>
+          </div>
+
+          <div class="cl-control-group">
+            <label class="cl-label">Length</label>
+            <div class="cl-toggle" id="length-toggle">
+              <button class="cl-toggle-btn active" data-value="full">Full</button>
+              <button class="cl-toggle-btn" data-value="short">Short</button>
+            </div>
+          </div>
+
+          <div class="cl-control-group">
+            <label class="cl-label">Extra Instructions</label>
+            <textarea id="cl-instructions" class="cl-textarea" placeholder="e.g. Mention my open source work, emphasise team leadership…" spellcheck="false"></textarea>
+          </div>
+
+          <button class="primary-btn" id="generate-btn">
+            <span class="btn-text">Generate Cover Letter</span>
+            <span class="btn-loader" style="display:none"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+          </button>
+          <p class="error-msg" id="error-msg" hidden></p>
+        </div>
+      </div>
+
+      <!-- Right: output -->
+      <div class="tool-right">
+        <div class="card" style="height:100%">
+          <div class="empty-state" id="empty-state">
+            <span>✉</span>
+            <p>Fill in your details and hit Generate</p>
+          </div>
+          <div id="cl-results" hidden>
+            <div class="cl-actions">
+              <h3>Cover Letter</h3>
+              <button class="copy-btn" id="copy-btn">Copy</button>
+            </div>
+            <div class="cl-output" id="cl-output"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <script src="coverletter.js"></script>
+</body>
+</html>

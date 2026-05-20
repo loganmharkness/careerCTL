@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Reviewer — careerCTL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <header>
+    <a href="/" class="logo">
+    <span class="logo-bracket">[</span>career<span class="logo-slash">/</span>ctl<span class="logo-bracket">]</span>
+    </a>
+    <p class="tagline">resume reviewer</p>
+    <a href="/" class="back-link">← back to tools</a>
+  </header>
+  <main>
+    <section class="input-panel input-panel--single">
+      <div class="textarea-group">
+        <label for="resume"><span class="label-num">01</span> Your Resume</label>
+        <textarea id="resume" placeholder="Paste your resume here, or upload a PDF below…" spellcheck="false"></textarea>
+        <span class="char-count" id="resume-count">0 characters</span>
+        <div class="file-upload-row">
+          <label for="resume-file" class="file-label"><span class="file-icon">↑</span> Upload PDF instead</label>
+          <input type="file" id="resume-file" accept=".pdf,.txt" />
+          <span class="file-name" id="file-name">no file chosen</span>
+        </div>
+      </div>
+      <button id="review-btn" class="primary-btn">
+        <span class="btn-text">Review Resume</span>
+        <span class="btn-loader" style="display:none"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+      </button>
+      <p id="error-msg" class="error-msg" hidden></p>
+    </section>
+
+    <section class="results-panel" id="results" hidden>
+      <div class="card" style="text-align:center">
+        <p id="verdict-text" style="font-size:0.88rem; color:var(--text); line-height:1.7;"></p>
+      </div>
+      <div class="card">
+        <h3>Scores</h3>
+        <div class="score-bars">
+          <div class="score-bar-item">
+            <div class="score-bar-label"><span>Clarity</span><span id="clarity-val">—</span></div>
+            <div class="score-bar-track"><div class="score-bar-fill" id="clarity-bar"></div></div>
+          </div>
+          <div class="score-bar-item">
+            <div class="score-bar-label"><span>Impact</span><span id="impact-val">—</span></div>
+            <div class="score-bar-track"><div class="score-bar-fill" id="impact-bar"></div></div>
+          </div>
+          <div class="score-bar-item">
+            <div class="score-bar-label"><span>Keywords</span><span id="keywords-val">—</span></div>
+            <div class="score-bar-track"><div class="score-bar-fill" id="keywords-bar"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-grid">
+        <div class="card card--green">
+          <h3><span class="card-icon">✓</span> Strengths</h3>
+          <ul class="bullet-list" id="strengths-list"></ul>
+        </div>
+        <div class="card card--red">
+          <h3><span class="card-icon">↑</span> Improvements</h3>
+          <div class="gap-list" id="improvements-list"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="reviewer.js"></script>
+</body>
+</html>

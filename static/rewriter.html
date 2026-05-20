@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bullet Rewriter — careerCTL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <header>
+    <a href="/" class="logo">
+    <span class="logo-bracket">[</span>career<span class="logo-slash">/</span>ctl<span class="logo-bracket">]</span>
+    </a>
+    <p class="tagline">bullet rewriter</p>
+    <a href="/" class="back-link">← back to tools</a>
+  </header>
+  <main>
+    <!-- Input -->
+    <section class="input-panel" id="input-section">
+      <div class="textarea-group">
+        <label for="resume"><span class="label-num">01</span> Your Resume</label>
+        <textarea id="resume" placeholder="Paste your resume here, or upload a PDF below…" spellcheck="false"></textarea>
+        <span class="char-count" id="resume-count">0 characters</span>
+        <div class="file-upload-row">
+          <label for="resume-file" class="file-label"><span class="file-icon">↑</span> Upload PDF instead</label>
+          <input type="file" id="resume-file" accept=".pdf,.txt" />
+          <span class="file-name" id="file-name">no file chosen</span>
+        </div>
+      </div>
+      <div class="divider"><span>+</span></div>
+      <div class="textarea-group">
+        <label for="job-description"><span class="label-num">02</span> Job Description</label>
+        <textarea id="job-description" placeholder="Paste the full job posting here…" spellcheck="false"></textarea>
+        <span class="char-count" id="jd-count">0 characters</span>
+      </div>
+      <button id="load-btn" class="primary-btn full-width">
+        <span class="btn-text">Load Bullets</span>
+        <span class="btn-loader" style="display:none"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+      </button>
+      <p id="error-msg" class="error-msg" hidden></p>
+    </section>
+
+    <!-- Rewriter two-column layout -->
+    <div class="tool-layout" id="rewriter-section" hidden>
+      <div class="tool-left">
+        <div class="card" style="height:100%">
+          <h3>✎ Your Resume Bullets</h3>
+          <p class="tool-hint">Click any line to rewrite it</p>
+          <div class="resume-bullets" id="resume-bullets"></div>
+        </div>
+      </div>
+      <div class="tool-right">
+        <div class="card" style="height:100%">
+          <div class="empty-state" id="empty-state">
+            <span>←</span>
+            <p>Select a bullet on the left to see rewritten versions</p>
+          </div>
+          <div id="rewrite-results" hidden>
+            <h3>Original</h3>
+            <p class="original-bullet" id="original-bullet"></p>
+            <h3>Rewritten Versions</h3>
+            <div class="rewrite-loading" id="rewrite-loading" style="display:none">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </div>
+            <div class="rewrite-list" id="rewrite-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="rewriter.js"></script>
+</body>
+</html>
