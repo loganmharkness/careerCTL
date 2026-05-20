@@ -2,7 +2,7 @@
 
 AI-powered career toolkit built with FastAPI and the Claude API. Five tools to take you from resume to offer.
 
-![careerCTL preview](static/image.png)
+![careerCTL preview](static/screenshot.png)
 
 ## Tools
 
@@ -11,6 +11,14 @@ AI-powered career toolkit built with FastAPI and the Claude API. Five tools to t
 - **Bullet Rewriter** — click any resume bullet and get three AI-rewritten versions that naturally incorporate missing keywords
 - **Cover Letter Generator** — paste your resume and a job description, choose your tone and length, and get a tailored cover letter in seconds
 - **Interview Prep** — paste a job description and get the 5 most likely technical and behavioural interview questions, each with a suggested answer framework and interviewer-intent insight
+
+## How It Works
+
+The frontend is plain HTML, CSS, and JavaScript — no framework. Each tool is a separate page that collects user input and sends it to the FastAPI backend via a POST request.
+
+The backend (`main.py`) receives the request, formats a prompt, and sends it to the Claude API. Claude returns structured JSON which the backend passes straight to the frontend. The JavaScript on each page parses that JSON and renders the results into the UI.
+
+There is no database or user accounts — everything is stateless. Each request is self-contained.
 
 ## Setup & Run
 
@@ -70,14 +78,6 @@ careerctl/
     ├── coverletter.html / coverletter.js
     └── interviewprep.html / interviewprep.js
 ```
-
-## How It Works
-
-The frontend is plain HTML, CSS, and JavaScript — no framework. Each tool is a separate page that collects user input and sends it to the FastAPI backend via a POST request.
-
-The backend (`main.py`) receives the request, formats a prompt, and sends it to the Claude API. Claude returns structured JSON which the backend passes straight to the frontend. The JavaScript on each page parses that JSON and renders the results into the UI.
-
-There is no database or user accounts — everything is stateless. Each request is self-contained.
 
 ---
 
