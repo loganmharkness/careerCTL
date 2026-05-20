@@ -75,10 +75,6 @@ analyzeBtn.addEventListener('click', async () => {
   }
 });
 
-document.addEventListener('keydown', e => {
-  if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') { e.preventDefault(); analyzeBtn.click(); }
-});
-
 function renderResults(d) {
   animateScore(d.match_score ?? 0);
   document.getElementById('summary-text').textContent = d.summary ?? '';

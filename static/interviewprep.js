@@ -21,10 +21,6 @@ function escHtml(str) {
   return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-document.addEventListener('keydown', e => {
-  if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') { e.preventDefault(); prepBtn.click(); }
-});
-
 prepBtn.addEventListener('click', async () => {
   clearError();
   const jd     = document.getElementById('job-description').value.trim();

@@ -68,10 +68,6 @@ loadBtn.addEventListener('click', async () => {
   }
 });
 
-document.addEventListener('keydown', e => {
-  if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') { e.preventDefault(); loadBtn.click(); }
-});
-
 function renderBullets(text) {
   const container = document.getElementById('resume-bullets');
   container.innerHTML = '';
