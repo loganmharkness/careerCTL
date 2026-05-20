@@ -70,3 +70,11 @@ careerctl/
     ├── coverletter.html / coverletter.js
     └── interviewprep.html / interviewprep.js
 ```
+
+## How It Works
+
+The frontend is plain HTML, CSS, and JavaScript — no framework. Each tool is a separate page that collects user input and sends it to the FastAPI backend via a POST request.
+
+The backend (`main.py`) receives the request, formats a prompt, and sends it to the Claude API. Claude returns structured JSON which the backend passes straight to the frontend. The JavaScript on each page parses that JSON and renders the results into the UI.
+
+There is no database or user accounts — everything is stateless. Each request is self-contained.
