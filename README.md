@@ -1,6 +1,6 @@
 # careerCTL
 
-AI-powered career toolkit built with FastAPI and the Claude API. Four tools to take you from resume to offer.
+AI-powered career toolkit built with FastAPI and the Claude API. Five tools to take you from resume to offer.
 
 ## Tools
 
@@ -8,12 +8,13 @@ AI-powered career toolkit built with FastAPI and the Claude API. Four tools to t
 - **JD Analyzer** — paste your resume and a job description to get a match score, missing keywords, skill gaps, and seniority alignment
 - **Bullet Rewriter** — click any resume bullet and get three AI-rewritten versions that naturally incorporate missing keywords
 - **Cover Letter Generator** — paste your resume and a job description, choose your tone and length, and get a tailored cover letter in seconds
+- **Interview Prep** — paste a job description and get the 5 most likely technical and behavioural interview questions, each with a suggested answer framework and interviewer-intent insight
 
 ## Tech Stack
 
 - **Frontend** — HTML, CSS, JavaScript
 - **Backend** — Python, FastAPI
-- **AI** — Anthropic Claude API
+- **AI** — Anthropic Claude API (claude-haiku-4-5)
 
 ## Project Structure
 ```
@@ -26,5 +27,6 @@ careerctl/
     ├── reviewer.html / reviewer.js
     ├── analyzer.html / analyzer.js
     ├── rewriter.html / rewriter.js
-    └── coverletter.html / coverletter.js
+    ├── coverletter.html / coverletter.js
+    └── interviewprep.html / interviewprep.js
 ```
