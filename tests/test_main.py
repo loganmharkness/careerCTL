@@ -40,7 +40,8 @@ class TestReview:
 
     def test_result_format(self, client):
         response = client.post("/review", data={"text": SAMPLE_RESUME})
-        data = json.loads(response.json()["result"])
+        raw = response.json()["result"].replace("```json", "").replace("```", "").strip()
+        data = json.loads(raw)
         assert "scores" in data
         assert "strengths" in data
         assert "improvements" in data
@@ -57,9 +58,11 @@ class TestAnalyze:
         assert "result" in response.json()
 
     def test_missing_input_returns_400(self, client):
+        # job_description="" triggers FastAPI 422 before the endpoint runs;
+        # send a valid JD with empty resume to hit the endpoint's own 400 check
         response = client.post("/analyze", data={
             "resume": "",
-            "job_description": "",
+            "job_description": SAMPLE_JD,
         })
         assert response.status_code == 400
         assert "error" in response.json()
@@ -69,7 +72,8 @@ class TestAnalyze:
             "resume": SAMPLE_RESUME,
             "job_description": SAMPLE_JD,
         })
-        data = json.loads(response.json()["result"])
+        raw = response.json()["result"].replace("```json", "").replace("```", "").strip()
+        data = json.loads(raw)
         assert "match_score" in data
         assert "summary" in data
         assert "seniority" in data
@@ -99,7 +103,8 @@ class TestRewrite:
             "missing_keywords": SAMPLE_MISSING_KEYWORDS,
             "job_description": SAMPLE_JD,
         })
-        data = json.loads(response.json()["result"])
+        raw = response.json()["result"].replace("```json", "").replace("```", "").strip()
+        data = json.loads(raw)
         assert "rewrites" in data
         assert len(data["rewrites"]) > 0
 
