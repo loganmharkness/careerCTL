@@ -22,7 +22,7 @@ git clone https://github.com/loganmharkness/careerCTL.git
 cd careerCTL
 
 # 2. Install dependencies
-pip install fastapi uvicorn anthropic python-dotenv pymupdf python-multipart
+pip install -r requirements.txt
 
 # 3. Add your API key
 echo "ANTHROPIC_API_KEY=your_key_here" > .env
