@@ -78,3 +78,7 @@ The frontend is plain HTML, CSS, and JavaScript — no framework. Each tool is a
 The backend (`main.py`) receives the request, formats a prompt, and sends it to the Claude API. Claude returns structured JSON which the backend passes straight to the frontend. The JavaScript on each page parses that JSON and renders the results into the UI.
 
 There is no database or user accounts — everything is stateless. Each request is self-contained.
+
+---
+
+Made by Logan Harkness
