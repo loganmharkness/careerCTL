@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interview Prep — careerCTL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <header>
+    <a href="/" class="logo">
+      <span class="logo-bracket">[</span>career<span class="logo-slash">/</span>ctl<span class="logo-bracket">]</span>
+    </a>
+    <p class="tagline">interview prep</p>
+    <a href="/" class="back-link">← back to tools</a>
+  </header>
+  <main>
+    <div class="tool-layout">
+
+      <!-- Left: inputs -->
+      <div class="tool-left">
+        <div class="card" style="height:100%">
+          <h3>Your Details</h3>
+
+          <div class="textarea-group" style="margin-bottom:1rem">
+            <label for="job-description"><span class="label-num">01</span> Job Description</label>
+            <textarea id="job-description" style="min-height:220px" placeholder="Paste the full job posting here…" spellcheck="false"></textarea>
+            <span class="char-count" id="jd-count">0 characters</span>
+          </div>
+
+          <div class="textarea-group" style="margin-bottom:1.5rem">
+            <label for="resume"><span class="label-num">02</span> Resume <span style="color:var(--muted);font-size:0.65rem;text-transform:none;letter-spacing:0">(optional — personalises questions)</span></label>
+            <textarea id="resume" style="min-height:160px" placeholder="Paste your resume to tailor questions to your background…" spellcheck="false"></textarea>
+            <span class="char-count" id="resume-count">0 characters</span>
+          </div>
+
+          <button class="primary-btn" id="prep-btn">
+            <span class="btn-text">Generate Questions</span>
+            <span class="btn-loader" style="display:none"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+          </button>
+          <p class="error-msg" id="error-msg" hidden></p>
+        </div>
+      </div>
+
+      <!-- Right: output -->
+      <div class="tool-right">
+        <div class="card" style="height:100%;overflow-y:auto">
+          <div class="empty-state" id="empty-state">
+            <span>◎</span>
+            <p>Paste a job description and hit Generate</p>
+          </div>
+          <div id="ip-results" hidden>
+            <div class="ip-section">
+              <div class="ip-section-header">
+                <span class="ip-section-badge ip-badge--tech">Technical</span>
+                <span class="ip-section-count">5 questions</span>
+              </div>
+              <div class="ip-question-list" id="technical-list"></div>
+            </div>
+            <div class="ip-section" style="margin-top:1.75rem">
+              <div class="ip-section-header">
+                <span class="ip-section-badge ip-badge--behav">Behavioural</span>
+                <span class="ip-section-count">5 questions</span>
+              </div>
+              <div class="ip-question-list" id="behavioral-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <script src="interviewprep.js"></script>
+</body>
+</html>

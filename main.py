@@ -202,5 +202,58 @@ Only output the cover letter text, nothing else.""",
     return {"result": message.content[0].text}
 
 
+# ── Interview Prep ─────────────────────────────────────────
+
+@app.post("/interview-prep")
+async def interview_prep(
+    job_description: str = Form(...),
+    resume: str = Form(default=""),
+):
+    if not job_description.strip():
+        return JSONResponse(status_code=400, content={"error": "Job description is required."})
+
+    context = f"JOB DESCRIPTION:\n{job_description[:2000]}"
+    if resume.strip():
+        context += f"\n\nRESUME:\n{resume[:2000]}"
+
+    message = client.messages.create(
+        model="claude-haiku-4-5",
+        max_tokens=2500,
+        system="""You are an expert interview coach preparing candidates for job interviews.
+Based on the job description (and resume if provided), generate exactly 5 technical questions
+and exactly 5 behavioural questions an interviewer would ask for this specific role.
+
+Respond ONLY with a valid JSON object — no preamble, no markdown fences, no backticks. Use this exact format:
+
+{
+  "technical": [
+    {
+      "question": "<the interview question>",
+      "framework": "<concise answer framework — key points, structure, or approach the candidate should cover>",
+      "why_asked": "<one sentence on what the interviewer is probing for>"
+    }
+  ],
+  "behavioral": [
+    {
+      "question": "<the interview question>",
+      "framework": "<STAR guidance: what Situation/Task to set up, what Action to describe, what Result to quantify>",
+      "why_asked": "<one sentence on what the interviewer is probing for>"
+    }
+  ]
+}
+
+Rules:
+- technical: questions specific to the skills, tools, technologies, and domain in the JD
+- behavioral: past-behavior questions assessing soft skills, answered with the STAR method
+- framework: practical and concise — tell the candidate exactly what to include in their answer
+- why_asked: helps the candidate understand the interviewer's intent
+- Generate exactly 5 of each type, no more, no less""",
+        messages=[
+            {"role": "user", "content": context}
+        ],
+    )
+    return {"result": message.content[0].text}
+
+
 # Serve static files — must be last
 app.mount("/", StaticFiles(directory="static", html=True), name="static")

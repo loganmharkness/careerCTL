@@ -115,6 +115,7 @@ main {
   font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--accent); margin-top: 0.5rem;
 }
+.tool-card--wide { grid-column: 1 / -1; }
 
 /* ── Input panel ────────────────────────────────────────── */
 .input-panel {
@@ -390,6 +391,59 @@ input[type="file"] { display: none; }
 .cl-textarea::placeholder { color: var(--muted); opacity: 0.6; }
 .cl-actions { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .cl-output { font-size: 0.82rem; line-height: 1.85; color: var(--text); white-space: pre-wrap; border-left: 2px solid var(--accent); padding-left: 1rem; }
+
+/* ── Interview Prep ─────────────────────────────────────── */
+.ip-section-header {
+  display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.85rem;
+}
+.ip-section-badge {
+  font-size: 0.62rem; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; border-radius: 4px; padding: 0.2rem 0.55rem;
+}
+.ip-badge--tech  { background: rgba(200,240,78,0.12); color: var(--accent); }
+.ip-badge--behav { background: rgba(78,160,255,0.12); color: #7eb8ff; }
+.ip-section-count { font-size: 0.65rem; color: var(--muted); }
+
+.ip-question-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.ip-question-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.ip-q-header {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  padding: 0.85rem 1rem;
+}
+.ip-q-num {
+  font-size: 0.62rem; color: var(--accent); letter-spacing: 0.1em;
+  text-transform: uppercase; flex-shrink: 0; padding-top: 0.15rem;
+}
+.ip-q-text {
+  font-size: 0.82rem; color: var(--text); line-height: 1.55; margin: 0;
+}
+.ip-q-body {
+  border-top: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.ip-framework {
+  display: flex; flex-direction: column; gap: 0.25rem;
+}
+.ip-framework-label {
+  font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); opacity: 0.7;
+}
+.ip-framework-text {
+  font-size: 0.77rem; color: var(--muted); line-height: 1.6; margin: 0;
+}
+.ip-why-asked {
+  font-size: 0.72rem; color: var(--muted); line-height: 1.5; margin: 0;
+}
+.ip-why-label {
+  font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); opacity: 0.6; margin-right: 0.35rem;
+}
 
 /* ── Responsive ─────────────────────────────────────────── */
 @media (max-width: 640px) {
