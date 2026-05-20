@@ -93,6 +93,7 @@ function renderBullets(text) {
 }
 
 async function startRewrite(bullet) {
+  document.getElementById('empty-state').style.display = 'none';
   document.getElementById('original-bullet').textContent = bullet;
   document.getElementById('rewrite-list').innerHTML = '';
   document.getElementById('rewrite-results').hidden = false;

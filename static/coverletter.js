@@ -35,6 +35,7 @@ function showError(msg) { errorMsg.textContent = msg; errorMsg.hidden = false; }
 function clearError()   { errorMsg.hidden = true; errorMsg.textContent = ''; }
 
 generateBtn.addEventListener('click', async () => {
+  document.getElementById('empty-state').style.display = 'none';
   clearError();
   const resume  = document.getElementById('resume').value.trim();
   const jd      = document.getElementById('job-description').value.trim();
