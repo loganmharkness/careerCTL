@@ -453,10 +453,91 @@ input[type="file"] { display: none; }
 }
 
 /* ── Responsive ─────────────────────────────────────────── */
-@media (max-width: 640px) {
-  .input-panel { grid-template-columns: 1fr; }
-  .divider { flex-direction: row; padding-top: 0; }
-  .card-grid { grid-template-columns: 1fr; }
-  .tool-grid { grid-template-columns: 1fr; }
-  .tool-layout { grid-template-columns: 1fr; }
+
+/* Tablet + mobile (≤768px) */
+@media (max-width: 768px) {
+  /* Header: reduce vertical padding, scale down logo */
+  header {
+    padding: 2rem 1rem 1.25rem;
+  }
+  .logo {
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+  }
+  .tagline {
+    font-size: 0.72rem;
+    margin-top: 0.4rem;
+  }
+
+  /* Main layout: tighter padding and gaps */
+  main {
+    padding: 0 1rem 3rem;
+    gap: 1.75rem;
+  }
+
+  /* Landing: stack tool cards to single column */
+  .tool-grid {
+    grid-template-columns: 1fr;
+  }
+  .tool-card {
+    padding: 1.5rem;
+  }
+
+  /* Input panel (analyzer, rewriter): stack textareas vertically */
+  .input-panel {
+    grid-template-columns: 1fr;
+  }
+  /* Divider becomes a horizontal bar between stacked textareas */
+  .divider {
+    flex-direction: row;
+    padding: 0.25rem 0;
+  }
+
+  /* Textareas: smaller min-height so they don't eat the whole screen */
+  textarea {
+    min-height: 180px !important;
+  }
+
+  /* Two-column tool layout (rewriter, cover letter): stack vertically */
+  .tool-layout {
+    grid-template-columns: 1fr;
+  }
+  .tool-left,
+  .tool-right {
+    min-height: auto;
+  }
+
+  /* Reviewer / analyzer results card grid: single column */
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Empty state: less tall when stacked */
+  .empty-state {
+    height: 220px;
+  }
+
+  /* Buttons: full width */
+  .primary-btn {
+    width: 100%;
+  }
+}
+
+/* Small phones (≤480px): further tighten spacing */
+@media (max-width: 480px) {
+  header {
+    padding: 1.5rem 0.75rem 1rem;
+  }
+  main {
+    padding: 0 0.75rem 2.5rem;
+    gap: 1.25rem;
+  }
+  .tool-card {
+    padding: 1.25rem;
+  }
+  .tool-card-title {
+    font-size: 1.3rem;
+  }
+  .card {
+    padding: 1rem;
+  }
 }
