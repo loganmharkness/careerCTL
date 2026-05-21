@@ -1,5 +1,7 @@
 # careerCTL
 
+**[Live Demo →](https://careerctl-production.up.railway.app)**
+
 AI-powered career toolkit built with FastAPI and the Claude API. Five tools to take you from resume to offer.
 
 ![careerCTL preview](static/screenshot.png)
@@ -63,6 +65,14 @@ Tests hit the live Claude API and require a valid `ANTHROPIC_API_KEY` in your `.
 - **Frontend** — HTML, CSS, JavaScript
 - **Backend** — Python, FastAPI
 - **AI** — Anthropic Claude API (claude-haiku-4-5)
+
+## Deployment
+
+This app is deployed on Railway. To deploy your own instance, fork the repo, connect it to Railway, and add your `ANTHROPIC_API_KEY` as an environment variable. Set the start command to:
+
+```
+uvicorn main:app --host 0.0.0.0 --port $PORT
+```
 
 ## Project Structure
 ```
