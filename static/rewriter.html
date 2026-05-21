@@ -3,11 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bullet Rewriter — careerCTL</title>
+  <title>Bullet Point Rewriter — careerCTL</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="stylesheet" href="style.css" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-03QJLKXWZE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-03QJLKXWZE');
+  </script>
 </head>
 <body>
   <div class="bg-grid"></div>
@@ -15,7 +22,7 @@
     <a href="/" class="logo">
     <span class="logo-bracket">[</span>career<span class="logo-slash">/</span>ctl<span class="logo-bracket">]</span>
     </a>
-    <p class="tagline">bullet rewriter</p>
+    <p class="tagline">bullet point rewriter</p>
     <a href="/" class="back-link">← back to tools</a>
   </header>
   <main>
@@ -38,7 +45,7 @@
         <span class="char-count" id="jd-count">0 characters</span>
       </div>
       <button id="load-btn" class="primary-btn full-width">
-        <span class="btn-text">Load Bullets</span>
+        <span class="btn-text">Load Bullet Points</span>
         <span class="btn-loader" style="display:none"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
       </button>
       <p id="error-msg" class="error-msg" hidden></p>
@@ -53,7 +60,7 @@
     <div class="tool-layout" id="rewriter-section" hidden>
       <div class="tool-left">
         <div class="card" style="height:100%">
-          <h3>✎ Your Resume Bullets</h3>
+          <h3>✎ Your Resume Bullet Points</h3>
           <p class="tool-hint">Click any line to rewrite it</p>
           <div class="resume-bullets" id="resume-bullets"></div>
         </div>
@@ -62,7 +69,7 @@
         <div class="card" style="height:100%">
           <div class="empty-state" id="empty-state">
             <span>←</span>
-            <p>Select a bullet on the left to see rewritten versions</p>
+            <p>Select a bullet point on the left to see rewritten versions</p>
           </div>
           <div id="rewrite-results" hidden>
             <h3>Original</h3>
