@@ -1,8 +1,6 @@
 # careerCTL
 
-**[Live Demo →](https://careerctl-production.up.railway.app)**
-
-AI-powered career toolkit built with FastAPI and the Claude API. Five tools to take you from resume to offer.
+AI-powered career toolkit built with FastAPI and the Claude API. Six tools to take you from resume to offer.
 
 ![careerCTL preview](static/screenshot.png)
 
@@ -13,6 +11,7 @@ AI-powered career toolkit built with FastAPI and the Claude API. Five tools to t
 - **Bullet Rewriter** — click any resume bullet and get three AI-rewritten versions that naturally incorporate missing keywords
 - **Cover Letter Generator** — paste your resume and a job description, choose your tone and length, and get a tailored cover letter in seconds
 - **Interview Prep** — paste a job description and get the 5 most likely technical and behavioural interview questions, each with a suggested answer framework and interviewer-intent insight
+- **LinkedIn Summary** — generate three versions of your LinkedIn About section optimised for your target role and job search status
 
 ## How It Works
 
@@ -66,14 +65,6 @@ Tests hit the live Claude API and require a valid `ANTHROPIC_API_KEY` in your `.
 - **Backend** — Python, FastAPI
 - **AI** — Anthropic Claude API (claude-haiku-4-5)
 
-## Deployment
-
-This app is deployed on Railway. To deploy your own instance, fork the repo, connect it to Railway, and add your `ANTHROPIC_API_KEY` as an environment variable. Set the start command to:
-
-```
-uvicorn main:app --host 0.0.0.0 --port $PORT
-```
-
 ## Project Structure
 ```
 careerctl/
@@ -86,7 +77,8 @@ careerctl/
     ├── analyzer.html / analyzer.js
     ├── rewriter.html / rewriter.js
     ├── coverletter.html / coverletter.js
-    └── interviewprep.html / interviewprep.js
+    ├── interviewprep.html / interviewprep.js
+    └── linkedin.html / linkedin.js
 ```
 
 ---
