@@ -3,6 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse
 from anthropic import Anthropic
 from dotenv import load_dotenv
+from datetime import datetime, timezone
 import fitz
 import os
 
@@ -10,6 +11,13 @@ load_dotenv()
 
 app = FastAPI()
 client = Anthropic()
+
+LOG_FILE = "usage.log"
+
+def log_usage(endpoint: str) -> None:
+    ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    with open(LOG_FILE, "a") as f:
+        f.write(f"{endpoint},{ts}\n")
 
 
 # ── Resume Reviewer ────────────────────────────────────────
@@ -54,6 +62,7 @@ Rules:
             {"role": "user", "content": f"Review this resume:\n\n{resume_text[:3000]}"}
         ],
     )
+    log_usage("review")
     return {"result": message.content[0].text}
 
 
@@ -116,6 +125,7 @@ Rules:
             }
         ],
     )
+    log_usage("analyze")
     return {"result": message.content[0].text}
 
 
@@ -156,6 +166,7 @@ Rules:
             }
         ],
     )
+    log_usage("rewrite")
     return {"result": message.content[0].text}
 
 
@@ -199,6 +210,7 @@ Only output the cover letter text, nothing else.""",
             }
         ],
     )
+    log_usage("cover-letter")
     return {"result": message.content[0].text}
 
 
@@ -252,7 +264,25 @@ Rules:
             {"role": "user", "content": context}
         ],
     )
+    log_usage("interviewprep")
     return {"result": message.content[0].text}
+
+
+# ── Usage Stats ────────────────────────────────────────────
+
+@app.get("/stats")
+async def stats():
+    counts: dict = {}
+    try:
+        with open(LOG_FILE) as f:
+            for line in f:
+                line = line.strip()
+                if line:
+                    endpoint = line.split(",")[0]
+                    counts[endpoint] = counts.get(endpoint, 0) + 1
+    except FileNotFoundError:
+        pass
+    return {"total": sum(counts.values()), "breakdown": counts}
 
 
 # Serve static files — must be last
