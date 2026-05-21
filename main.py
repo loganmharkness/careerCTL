@@ -268,6 +268,57 @@ Rules:
     return {"result": message.content[0].text}
 
 
+# ── LinkedIn Summary Generator ────────────────────────────
+
+@app.post("/linkedin")
+async def linkedin(
+    resume: str = Form(default=""),
+    tone: str = Form(default="professional"),
+    focus: str = Form(default="job seeking"),
+    file: UploadFile = File(default=None),
+):
+    if file and file.filename:
+        contents = await file.read()
+        if file.filename.lower().endswith(".pdf"):
+            doc = fitz.open(stream=contents, filetype="pdf")
+            resume = "".join(page.get_text() for page in doc)
+        else:
+            resume = contents.decode("utf-8", errors="ignore")
+
+    if not resume.strip():
+        return JSONResponse(status_code=400, content={"error": "No resume content found."})
+
+    message = client.messages.create(
+        model="claude-haiku-4-5",
+        max_tokens=1000,
+        system=f"""You are a LinkedIn profile expert. Write three distinct LinkedIn About section summaries based on the resume provided.
+
+Each summary must be under 300 characters, written in first person, {tone} in tone, and optimised for someone who is {focus}.
+
+Respond ONLY with a valid JSON object — no preamble, no markdown fences, no backticks. Use this exact format:
+
+{{
+  "summaries": [
+    {{"version": "<summary text>", "angle": "Achievement-focused"}},
+    {{"version": "<summary text>", "angle": "Skill-focused"}},
+    {{"version": "<summary text>", "angle": "Story-focused"}}
+  ]
+}}
+
+Rules:
+- Each summary must be strictly under 300 characters
+- Write in first person (I, my)
+- Each version should take a genuinely different angle
+- Naturally reflect the job search status: {focus}
+- Do not invent credentials not in the resume""",
+        messages=[
+            {"role": "user", "content": f"Write LinkedIn summaries for this resume:\n\n{resume[:3000]}"}
+        ],
+    )
+    log_usage("linkedin")
+    return {"result": message.content[0].text}
+
+
 # ── Usage Stats ────────────────────────────────────────────
 
 @app.get("/stats")
