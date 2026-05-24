@@ -4,6 +4,8 @@ const btnLoader       = generateBtn.querySelector('.btn-loader');
 const errorMsg        = document.getElementById('error-msg');
 const resumeFile      = document.getElementById('resume-file');
 const fileNameDisplay = document.getElementById('file-name');
+const emptyState      = document.getElementById('empty-state');
+const liResults       = document.getElementById('li-results');
 
 resumeFile.addEventListener('change', () => {
   fileNameDisplay.textContent = resumeFile.files[0]?.name ?? 'no file chosen';
@@ -27,8 +29,8 @@ function setLoading(on) {
   btnText.style.display   = on ? 'none' : 'inline';
   btnLoader.style.display = on ? 'flex' : 'none';
 }
-function showError(msg) { errorMsg.textContent = msg; errorMsg.hidden = false; }
-function clearError()   { errorMsg.hidden = true; errorMsg.textContent = ''; }
+function showError(msg) { errorMsg.textContent = msg; errorMsg.style.display = 'block'; }
+function clearError()   { errorMsg.style.display = 'none'; errorMsg.textContent = ''; }
 function escHtml(str) {
   return String(str)
     .replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -45,8 +47,8 @@ generateBtn.addEventListener('click', async () => {
   const focus = document.querySelector('#focus-toggle .cl-toggle-btn.active').dataset.value;
 
   setLoading(true);
-  document.getElementById('empty-state').hidden = true;
-  document.getElementById('li-results').hidden  = true;
+  emptyState.style.display  = 'none';
+  liResults.style.display   = 'none';
 
   try {
     const form = new FormData();
@@ -59,7 +61,6 @@ generateBtn.addEventListener('click', async () => {
     const data = await res.json();
     if (!res.ok || data.error) {
       showError(data.error || 'Something went wrong.');
-      document.getElementById('empty-state').hidden = false;
       return;
     }
 
@@ -67,7 +68,6 @@ generateBtn.addEventListener('click', async () => {
     renderResults(parsed);
   } catch (err) {
     showError('Failed to connect to the server. Is it running?');
-    document.getElementById('empty-state').hidden = false;
     console.error(err);
   } finally {
     setLoading(false);
@@ -91,7 +91,7 @@ function renderResults(d) {
     list.appendChild(item);
   });
 
-  // Wire copy buttons after rendering
+  // Wire copy buttons — copies only the summary text, not the angle label
   list.querySelectorAll('.copy-btn').forEach(btn => {
     btn.addEventListener('click', function () {
       const idx  = parseInt(this.dataset.index);
@@ -103,5 +103,5 @@ function renderResults(d) {
     });
   });
 
-  document.getElementById('li-results').hidden = false;
+  liResults.style.display = 'block';
 }
