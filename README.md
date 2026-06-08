@@ -2,7 +2,9 @@
 
 AI-powered career toolkit built with FastAPI and the Claude API. Six tools to take you from resume to offer.
 
-![careerCTL preview](static/screenshot.png)
+**[Live Demo](https://careerctl-production.up.railway.app)**
+
+[![careerCTL preview](https://github.com/loganmharkness/careerCTL/raw/main/static/screenshot.png)](https://careerctl-production.up.railway.app)
 
 ## Tools
 
